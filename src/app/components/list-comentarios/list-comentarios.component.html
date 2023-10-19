@@ -1,1 +1,33 @@
-<p>list-comentarios works!</p>
+<div class="row mt-3">
+  <div class="col-lg-6">
+    <h1>Listado de comentarios</h1>
+  </div>
+  <div class="col-lg-6">
+    <button class="btn btn-primary float-end">Nuevo comentario</button>
+  </div>
+</div>
+
+<table class="table table-hover mt-3" *ngIf="listComentarios.length">
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Creador</th>
+      <th>Fecha</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let comentario of listComentarios; let i=index">
+      <td>{{ comentario.titulo}}</td>
+      <td>{{ comentario.creador}}</td>
+      <td>{{ comentario.fechaCreacion | date:'dd/MM/yyyy'}}</td>
+      <td></td>
+      <td></td>
+    </tr>
+
+  </tbody>
+</table>
+<div class="row mt-5" *ngIf="!listComentarios.length">
+  <h5>No Hay comentarios</h5>
+</div>
