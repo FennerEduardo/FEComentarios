@@ -1,1 +1,28 @@
-<p>agregar-editar-comentario works!</p>
+<h1 class="mt-3">{{accion}} Comentario</h1>
+<form [formGroup]="agregarComentario" (ngSubmit)="agregar()">
+  <div class="mb-3">
+    <label for="titulo" class="form-label">Título</label>
+    <input type="text" formControlName="titulo" class="form-control" id="titulo" aria-describedby="tituloHelp">
+    <span class="text-danger" *ngIf="agregarComentario.get('titulo')?.invalid && agregarComentario.get('titulo')?.touched">
+      El <strong>título</strong> es inválido
+    </span>
+    <div id="tituloHelp" class="form-text">Escriba el comentario.</div>
+  </div>
+  <div class="mb-3">
+    <label for="creador" class="form-label">Creador</label>
+    <input type="text" formControlName="creador" class="form-control" id="creador" aria-describedby="creadorHelp">
+    <span class="text-danger" *ngIf="agregarComentario.get('creador')?.invalid && agregarComentario.get('creador')?.touched">
+      El <strong>Creador</strong> es inválido
+    </span>
+    <div id="creadorHelp" class="form-text">Escriba el creador.</div>
+  </div>
+  <div class="mb-3">
+    <label for="texto" class="form-label">Texto</label>
+    <textarea class="form-control" formControlName="texto" id="texto" rows="8"></textarea>
+    <span class="text-danger" *ngIf="agregarComentario.get('texto')?.invalid && agregarComentario.get('texto')?.touched">
+      El <strong>Texto</strong> es inválido
+    </span>
+  </div>
+  <button type="submit" [disabled]="agregarComentario.invalid" class="btn btn-primary mb-3 float-end">Guardar</button>
+  <button type="button" routerLink="/" class="btn btn-secondary mb-3">Volver</button>
+</form>
